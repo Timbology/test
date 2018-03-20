@@ -28,8 +28,6 @@ class ViewController: UIViewController {
 //        dbReference?.child("about").childByAutoId().setValue("BCHA has been helping people off the streets across the South of England for over 45 years. We help people by offering practical and emotional support, as well as providing people with a safe place to stay.")
 //        dbReference?.child("target").childByAutoId().setValue("10")
         
-        
-        
     
         let camera = GMSCameraPosition.camera(withLatitude: 50.720806, longitude:-1.904755, zoom: 14)
         let mapView = GMSMapView.map(withFrame:.zero, camera: camera)

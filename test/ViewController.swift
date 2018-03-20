@@ -18,37 +18,38 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //navigationItem.title = "Lifebar"
+        navigationItem.title = "Lifebar"
         
-        dbReference = Database.database().reference()
-        dbReference?.child("shelter").childByAutoId().setValue("BCHA")
-        dbReference?.child("website").childByAutoId().setValue("bcha.org.uk")
-        dbReference?.child("address").childByAutoId().setValue("21 Christchurch Rd, Bournemouth BH1 3NS")
-        dbReference?.child("number").childByAutoId().setValue("01202 410500")
-         dbReference?.child("about").childByAutoId().setValue("BCHA has been helping people off the streets across the South of England for over 45 years. We help people by offering practical and emotional support, as well as providing people with a safe place to stay.")
-        dbReference?.child("target").childByAutoId().setValue("10")
+//        dbReference = Database.database().reference()
+//        dbReference?.child("shelter").childByAutoId().setValue("BCHA")
+//        dbReference?.child("website").childByAutoId().setValue("bcha.org.uk")
+//        dbReference?.child("address").childByAutoId().setValue("21 Christchurch Rd, Bournemouth BH1 3NS")
+//        dbReference?.child("number").childByAutoId().setValue("01202 410500")
+//        dbReference?.child("about").childByAutoId().setValue("BCHA has been helping people off the streets across the South of England for over 45 years. We help people by offering practical and emotional support, as well as providing people with a safe place to stay.")
+//        dbReference?.child("target").childByAutoId().setValue("10")
         
         
         
-        GMSServices.provideAPIKey("AIzaSyBhXrFRtXJmKveVdcBFWeOd_aA-fSi_H1g")
-        let camera = GMSCameraPosition.camera(withLatitude: 50.7424, longitude: 8956, zoom: 10)
-        let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
+    
+        let camera = GMSCameraPosition.camera(withLatitude: 50.720806, longitude:-1.904755, zoom: 14)
+        let mapView = GMSMapView.map(withFrame:.zero, camera: camera)
         
         let marker = GMSMarker()
-        marker.position = camera.target
+        marker.position = CLLocationCoordinate2D(latitude: 50.720806, longitude: -1.904755)
         marker.snippet = "You are here"
         marker.appearAnimation = GMSMarkerAnimation.pop
+        marker.map = mapView
         
         //mapView.mapType = kGMSTypeSatellite
         view = mapView
         
         
         //retrieve data
-        dbHandle = dbReference?.child("shelter").observe(.childAdded, with: { (snapshot) in
-            
-           let shelter:String? = snapshot.value as? String
-           print(shelter)
-            })
+//        dbHandle = dbReference?.child("shelter").observe(.childAdded, with: { (snapshot) in
+//
+//           let shelter:String? = snapshot.value as? String
+//           print(shelter)
+//            })
         // Do any additional setup after loading the view, typically from a nib.
     }
 
